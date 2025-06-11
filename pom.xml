@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pe.vptd</groupId>
-    <artifactId>VamosPorTuDepa</artifactId>
+    <artifactId>VamosPorTuDepa-login</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>VamosPorTuDepa</name>
-    <description>VamosPorTuDepa</description>
+    <name>VamosPorTuDepa-login</name>
+    <description>VamosPorTuDepa-login</description>
     <url/>
     <licenses>
         <license/>
