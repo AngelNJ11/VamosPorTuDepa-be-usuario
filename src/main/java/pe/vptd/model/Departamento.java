@@ -17,6 +17,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import pe.vptd.model.constante.DepartamentoEstado;
+import pe.vptd.model.constante.DepartamentoTipo;
 
 @Entity
 @Table(name = "departamentos")
@@ -42,10 +44,10 @@ public class Departamento {
     private BigDecimal precio;
 
     @Enumerated(EnumType.STRING)
-    private Tipo tipo;
+    private DepartamentoTipo tipo;
 
     @Enumerated(EnumType.STRING)
-    private Estado estado = Estado.DISPONIBLE;
+    private DepartamentoEstado estado;
 
     private BigDecimal latitud;
 
@@ -66,12 +68,6 @@ public class Departamento {
     @JoinColumn(name = "creado_por")
     private Usuario creadoPor;
 
-    public enum Tipo {
-        ALQUILER, VENTA
-    }
-
-    public enum Estado {
-        DISPONIBLE, ALQUILADO, VENDIDO
-    }
+  
 	
 }

@@ -16,6 +16,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import pe.vptd.model.constante.TransaccionesEstado;
 
 @Entity
 @Table(name = "transacciones")
@@ -34,7 +35,7 @@ public class Transaccion {
 	    private Departamento departamento;
 
 	    @Enumerated(EnumType.STRING)
-	    private Tipo tipo;
+	    private TransaccionesEstado tipo;
 
 	    private BigDecimal monto;
 
@@ -43,7 +44,5 @@ public class Transaccion {
 	    private LocalDateTime fecha;
 
 
-	    public enum Tipo {
-	        ALQUILER, VENTA
-	    }
+	 
 }
