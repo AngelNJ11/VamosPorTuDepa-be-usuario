@@ -7,13 +7,21 @@ import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
 
 import pe.vptd.model.Departamento;
-import pe.vptd.model.DepartamentoUsuario;
 import pe.vptd.model.DepartamentoUsuarioProjection;
+import pe.vptd.model.DepatamentoNroVistasProjection;
 
 @Repository
 public interface IDepatamentoRepository extends JpaRepository<Departamento,Integer>{
 	
 	@Procedure(procedureName = "listar_departamentos_con_usuarios")
     List<DepartamentoUsuarioProjection> listarDepartamentosConUsuarios();
+	
+	
+	@Procedure(procedureName = "listar_departamentos_con_usuarios_no_vendido")
+    List<DepartamentoUsuarioProjection> listarDepartamentosConUsuariosNoVendido();
+	
+	@Procedure(procedureName = "listar_departamentos_mas_vistos")
+    List<DepatamentoNroVistasProjection> listarDepartamentosMasVistos();
+
 
 }
