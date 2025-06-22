@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pe.vptd.model.Departamento;
@@ -63,5 +64,13 @@ public class DepartamentoController {
 		return departamentoServices.eliminarDepartamento(id);
 	}
 	
+	@GetMapping("/filtrar")
+	public ResponseEntity<Map<String, Object>> filtrarDepartamentos(
+	        @RequestParam(required = false) String distrito,
+	        @RequestParam(required = false) Integer habitaciones,
+	        @RequestParam(required = false) Integer banos) {
+
+	    return departamentoServices.filtrarDepartamentos(distrito, habitaciones, banos);
+	}
 
 }

@@ -16,6 +16,8 @@ public interface IDepartamentoService {
 	public ResponseEntity<Map<String, Object>> actualizarDepartamento(Departamento depa , int id);
 	public ResponseEntity<Map<String, Object>> actualizarDepartamentoEstado(int id );
 	public ResponseEntity<Map<String, Object>> eliminarDepartamento (int id);
+	public ResponseEntity<Map<String, Object>> filtrarDepartamentos(String distrito, Integer habitaciones, Integer banos);
+
 	
 
 }
