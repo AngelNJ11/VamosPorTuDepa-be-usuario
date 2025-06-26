@@ -202,9 +202,30 @@ public class DepartamentoServiceImpl implements IDepartamentoService {
 		}
 	}
 
+	@Override
+	@Transactional
+	public ResponseEntity<Map<String, Object>> filtrarDepartamentos(String distrito, Integer habitaciones, Integer banos) {
+	    Map<String, Object> res = new HashMap<>();
 
-	
-	
-	
+	    List<DepartamentoUsuario> lista = departamentoRepo.filtrarDepartamentos(distrito, habitaciones, banos)
+	        .stream()
+	        .map(p -> new DepartamentoUsuario(
+	            p.getId(), p.getTitulo(), p.getDescripcion(), p.getDireccion(), p.getDistrito(),
+	            p.getNum_habitaciones(), p.getNum_banos(), p.getPrecio(), p.getTipo(), p.getEstado(),
+	            p.getLatitud(), p.getLongitud(), p.getImagen_principal(), p.getFecha_creacion(),
+	            p.getFecha_modificacion(), p.getCreado_por(), p.getNombre(), p.getApellido(),
+	            p.getEmail(), p.getTelefono()
+	        )).collect(Collectors.toList());
 
+	    if (!lista.isEmpty()) {
+	        res.put("mensaje", "Departamentos filtrados");
+	        res.put("status", HttpStatus.OK);
+	        res.put("productos", lista);
+	        return ResponseEntity.ok(res);
+	    } else {
+	        res.put("mensaje", "No se encontraron resultados");
+	        res.put("status", HttpStatus.NOT_FOUND);
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(res);
+	    }
+	}
 }

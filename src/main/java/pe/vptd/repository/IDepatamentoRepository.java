@@ -23,5 +23,7 @@ public interface IDepatamentoRepository extends JpaRepository<Departamento,Integ
 	@Procedure(procedureName = "listar_departamentos_mas_vistos")
     List<DepatamentoNroVistasProjection> listarDepartamentosMasVistos();
 
+	@Procedure(procedureName = "filtrar_departamentos")
+	List<DepartamentoUsuarioProjection> filtrarDepartamentos(String p_distrito, Integer p_habitaciones, Integer p_banos);
 
 }
